@@ -16,6 +16,7 @@ assessmentButton.addEventListener(
 
   // 診断結果表示エリアの作成
   resultDivision.innerText = '';
+  /*元のコード
   const heading = document.createElement('h3');
   heading.innerText = '診断結果';
   resultDivision.appendChild(heading);//appendChild...子を追加する
@@ -25,8 +26,30 @@ assessmentButton.addEventListener(
   const result = assessment(userName);
   paragragh.innerText = result;
   resultDivision.appendChild(paragragh);
+  */
+  // headerDivision の作成
+  const headerDivision = document.createElement('div');
+  headerDivision.setAttribute('class', 'card-header text-bg-primary');
+  headerDivision.innerText = '診断結果'
 
-  //TODO ツイートエリアの作成
+  // bodyDivision の作成
+  const bodyDivision = document.createElement('div');
+  bodyDivision.setAttribute('class', 'card-body');
+
+  const paragragh = document.createElement('p');
+  paragragh.setAttribute('class', 'card-text');
+  const result = assessment(userName);
+  paragragh.innerText = result;
+  bodyDivision.appendChild(paragragh);
+
+  // resultDivision に Bootstrap スタイルを適用する
+  resultDivision.setAttribute('class', 'card');
+
+  // headerDivision と bodyDivision を resultDivision に差し込む
+  resultDivision.appendChild(headerDivision);
+  resultDivision.appendChild(bodyDivision);
+  
+  //TODO ツイートエリアの作成...年齢制限により不可
   tweetDivision.innerText = '';
   }
 )
@@ -73,7 +96,7 @@ function assessment(userName) {
   return result;
 }
 
-/*テストを行う関数
+//テストを行う関数
 function test() {
   console.log('診断結果の文章テスト');
 
@@ -107,4 +130,3 @@ function test() {
 }
 
 test();
-*/
